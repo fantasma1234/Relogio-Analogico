@@ -1,0 +1,98 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /*<-- vh serve para oculpar a altura máxima*/
+    background: radial-gradient(circle, #141e30, #243b55);
+}
+
+.relogio {
+    height: 500px;
+    width: 500px;
+    position: relative;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #05263c, #000d1a);
+}
+
+.relogio::before {
+    content: "";
+    width: 525px;
+    height: 525px;
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(to right, #68b9fb, #ff5ef9);
+    box-shadow: 0 0 15px 15px rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.numero {
+    transform: rotate(calc(30deg * var(--n)));
+    position: absolute;
+    text-align: center;
+    inset: 20px;
+    font-size: 30px;
+    color: #68b9fb;
+    text-shadow: 0 0 12px #ee8feb;
+}
+
+.line {
+    transform: rotate(calc(30deg * var(--n)));
+    position: absolute;
+    text-align: center;
+    inset: 20px;
+    font-size: 10px;
+    color: #68b9fb;
+    text-shadow: 0 0 12px #ee8feb;
+}
+
+.numero b {
+    transform: rotate(calc(-30deg * var(--n)));
+    display: inline-block;
+}
+
+.centro {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background-color: #fe15f6;
+    border: 6px solid #68b9fb;
+    border-radius: 50%;
+}
+
+.ponteiro-hora, .ponteiro-minuto, .ponteiro-segundo {
+    --rotate: 0;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%) rotate(calc(var(--rotate) * 1deg));
+    transform-origin: bottom;
+    border-radius: 30px 30px 0 0;
+}
+
+.ponteiro-hora {
+    width: 12px;
+    height: 130px;
+    background: linear-gradient(#0e8ef6, #fe15f6);
+}
+
+.ponteiro-minuto {
+    width: 12px;
+    height: 190px;
+    background: linear-gradient(to top, #0e8ef6, #fe15f6);
+}
+
+.ponteiro-segundo {
+    width: 6px;
+    height: 210px;
+    background: linear-gradient(to top, #0e8ef6, #fe15f6);
+}
